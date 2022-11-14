@@ -182,39 +182,3 @@ day5/oneAPI-samples/Tools/Advisor/matrix_multiply_advisor/analyze/report.html
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Task 2) Attempt Quiz 
-1)open portal  lms.fice.in and LogIn with your credintials
-2)From Menu click on Course and select your collage name MIT 
-Pune(C Programming)
-3)Click on Quiz to give Quiz
-
-
-Task 3) Provide Feedback of 5 days workshop
-1)open portal  lms.fice.in and LogIn with your credintials
-2)From Menu click on Course and select your collage name MIT 
-Pune(C Programming)
-3)click on Feedback to provide feedback about 5 days workshop.
-
-
-
-
-
-
-
-Hello Teacher,
-Kindly attempt Quiz.
-Task1) Attempt Quiz 
-1)open portal  lms.fice.in and LogIn with your credintials
-2)From Menu click on Course and select your collage name MIT Pune(C Programming)
-3)Click on Quiz to give Quiz
-
-
-Task2) Provide Feedback of 5 days workshop
-1)open portal  lms.fice.in and LogIn with your credintials
-2)From Menu click on Course and select your collage name MIT Pune(C Programming)
-3)click on Feedback to provide feedback about 5 days workshop.
-
-Regards,
-Yogesh Raje 
-
