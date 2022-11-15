@@ -1,10 +1,23 @@
-Github repository link
-
-
+================================================================
+Day1 -
+Task2- open Github repository link
 https://github.com/YogeshRaje/INTEL_FICE_KPR
 
+===========================================================
 
-Invoke Intel comopler on Devcloud 
+Task2- Register and LogIn on Intel Devlcloud oneAPI
+
+step1)- open url  https://devcloud.intel.com/oneapi/ 
+and create account on Intel Devlcoud oneAPI by clicking link  Register now for Intel Devcloud 
+
+step3) Sign In with your credentials and Click on Get started tab  
+Step4) Under  Intel® oneAPI Base Toolkit , click on View Training Modules Button
+step5) Under Module 0 ,Introduction to JupyterLab* and Notebooks ; click on link  TryIn JupyterLab ; It will open Intel's Jupyter lab 
+step6) It will open under folder file Introduction_to_Jupyter.ipynb under with oneAPI_Essentials/00_Introduction_to_Jupyter/Introduction_to_Jupyter.ipynb 
+step7) To get updated files from Intel ; Run the last code cell of jupyter notebook Introduction_to_Jupyter.ipynb
+!/data/oneapi_workshop/get_jupyter_notebooks.sh
+
+step7)Invoke Intel compiler on Devcloud 
 While running On Devcloud change command in file 
 oneAPI_Essentials/01_oneAPI_Intro/run_simple.sh
 from 
@@ -14,6 +27,27 @@ dpcpp lab/helloworld.c
 
 and in lab folder add file helloworld.c 
 oneAPI_Essentials/01_oneAPI_Intro/lab/helloworld.c
+
+================
+++++++++++++++++++++++++++++++
+Task - execute c program on IntelDevcloud's Terminal 
+step1) LogiIn and Click on + symbol and Terminal 
+step2) Intinitalize and Invoke Intel optimized complier using follwoing command 
+>source /opt/intel/inteloneapi/setvars.sh
+
+step3) create helloworld.c program using nano editor
+>nano helloworld.c
+
+step4)compile and execute program 
+>dpcpp welcome.c -o intelwelcomedemo.out
+>./intelwelcomedemo.out
+
+
+step5) diaplay how much time is taken by above program 
+add time code into the helloword.c and run the code with above steps 
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -105,6 +139,9 @@ https://www.intel.com/content/www/us/en/develop/documentation/get-started-with-d
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Day3
+
+Task 1- Download and install Dev-C++ Tool for excuting programs of c and c++ on Windows O.S 
+https://sourceforge.net/projects/orwelldevcpp/
 
 Open Terminal 
 
