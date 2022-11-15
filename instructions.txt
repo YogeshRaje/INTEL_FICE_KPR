@@ -1,6 +1,6 @@
 ================================================================
 Day1 -
-Task2- open Github repository link
+Task1- open Github repository link
 https://github.com/YogeshRaje/INTEL_FICE_KPR
 
 ===========================================================
