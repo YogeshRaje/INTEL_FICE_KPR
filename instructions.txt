@@ -18,7 +18,7 @@ oneAPI_Essentials/01_oneAPI_Intro/lab/helloworld.c
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Day2
-Install and Invoke Intel optimzed complier 
+Task1 - Install and Invoke Intel optimzed complier on windows O.S.
 
 Prerequisite-
 -On Windoows OS ,  Microsoft Visual Studio 2022 community Edition is to be installed (For Linux OS this prequisite is not appilcable)
@@ -35,59 +35,57 @@ a)Open command prompt
 > setvars.bat
 
 b) To run c or cpp code on intel optimized complier 
->cd C:\Users\user\Desktop\mit
+>cd C:\Users\user\Desktop\kpriet
 >dpcpp helloworld.c
 >icx helloworld.c
 >helloworld
 
-
-
-Run program On Ubuntu Linux 
-step1- open newterminal 
+======================================================================================
+Task2- Run c program on Ubuntu Linux O.S.
+-Run program On Ubuntu Linux 
+step1- open newterminal and write program using nano editor 
 >nano welcome.c
 write code 
-save ctrl+X
 
+Step2 - Save program and retrun back to terminal
+-save ctrl+X 
+-Press Y and Enter Key
+
+Step3-complie and execute program uisng gcc compiler 
 >gcc welcome.c
-Install gcc 
+
+-If gcc is not installed then Install gcc 
 >sudo get install gcc 
+
+-compile c program using gcc compiler 
 >gcc welcome.c   # It will create a.out file 
 check file a.out 
 >dir 
 
-run program 
+-run the program 
 >./a.out # It shows output 
 
+****Another way to run c proram using gcc******
 To run file with our own outpout file
-<gcc filename.c -o filename.out 
+>gcc filename.c -o filename.out 
 >gcc welcome.c -o wel.out
 >dir 
 >./wel.out
 
+=========================================================================================
+Task3 - Install Intel's Compiler on Ubuntu Linux O.S.
 
-
-Install INtel's Compiler on Linux 
-
-download comlpiler .sh file
+step1)- download comlpiler .sh file
 https://www.intel.com/content/www/us/en/developer/articles/tool/oneapi-standalone-components.html#dpcpp-cpp
-change mode of file 
-open new terminal in Downloads
+step2)change mode of file 
+-open new terminal in Downloads
 >chmod +777 l_dpcpp-cpp-compiler_p_2022.2.1.16991_offline.sh
 Run .sh file 
 >sh l_dpcpp-cpp-compiler_p_2022.2.1.16991_offline.sh
 
-Intsaller will open and install intel complier 
--after installation it is saved on download comlpiler .sh file
-https://www.intel.com/content/www/us/en/developer/articles/tool/oneapi-standalone-components.html#dpcpp-cpp
-change mode of file 
-open new terminal in Downloads
->chmod +777 filename.sh
-Run .sh file 
->sh filename.sh
+-Intsaller will open and install intel complier 
 
-Intsaller will open and install intel complier 
-
-after installation it is saved on location 
+-After installation it is saved at location 
 /home/yogesh/intel/oneapi
 https://www.intel.com/content/www/us/en/develop/documentation/get-started-with-dpcpp-compiler/top/get-started-on-linux.html
 
@@ -103,7 +101,11 @@ https://www.intel.com/content/www/us/en/develop/documentation/get-started-with-d
 >icx welcome.c -o intelwelcomedemo.out
 >./intelwelcomedemo.out
 
-+++++++++++++++++++++++++++++++++++++++++++++
+==============================================================================================================
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Day3
+
 Open Terminal 
 
 >clinfo –l 
