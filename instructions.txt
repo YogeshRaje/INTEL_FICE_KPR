@@ -14,8 +14,8 @@ and in lab folder add file helloworld.c
 oneAPI_Essentials/01_oneAPI_Intro/lab/helloworld.c
 
 
-
-
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Day2
 Install and Invoke Intel optimzed complier 
 
 Download link for Intel c c++ compiler 
