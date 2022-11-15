@@ -1,4 +1,6 @@
 Github repository link
+
+
 https://github.com/YogeshRaje/INTEL_FICE_KPR
 
 
@@ -18,11 +20,14 @@ oneAPI_Essentials/01_oneAPI_Intro/lab/helloworld.c
 Day2
 Install and Invoke Intel optimzed complier 
 
-Download link for Intel c c++ compiler 
+Prerequisite-
+-On Windoows OS ,  Microsoft Visual Studio 2022 community Edition is to be installed (For Linux OS this prequisite is not appilcable)
+
+A)Download link for Intel c c++ compiler 
 https://www.intel.com/content/www/us/en/developer/articles/tool/oneapi-standalone-components.html#dpcpp-cpp
 
 
-To run file using intel optimized complier 
+B)To run file using intel optimized complier 
 Step1 ) Intilaize the Intel Complier 
 a)Open command prompt 
 >cmd 
