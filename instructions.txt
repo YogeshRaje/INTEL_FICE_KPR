@@ -158,7 +158,7 @@ https://www.intel.com/content/www/us/en/develop/documentation/get-started-with-d
 
 Day3
 
-Task 1- Download and install Dev-C++ Tool for excuting programs of c and c++ on Windows O.S 
+Task 1- Download and install Dev-C++ Software for excuting programs of c and c++ on Windows O.S 
 https://sourceforge.net/projects/orwelldevcpp/
 
 Open Terminal 
