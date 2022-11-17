@@ -169,7 +169,13 @@ To get access of GPU
 >clinfo –l 
 >exit
 >qstat
+================
 
+Day 4 
+-SYCL programming structure 
+-device selection
+-device info
+-Run all the programs of c and c++
 
 +++++++++++++++++++++++++++++++
 Day5 -
@@ -373,15 +379,7 @@ It will shpw you the fpga stratix10
 
 
 
-
-
-
-Task3 -
-Excersice Day5
-https://devcloud.intel.com/oneapi/documentation/base-toolkit/
-+++++++++++++++++++++++++++++++++++++++++++++=
-
-Task2  -Intel Advisor -offload advisor
+Task4  -Intel Advisor -offload advisor
 open terminal on Intel Devcloud  and execute follwoing commands
 1)$ mkdir day5
 2)$ cd day5
