@@ -379,7 +379,7 @@ It will shpw you the fpga stratix10
 
 
 
-Task4  -Intel Advisor -offload advisor
+Task6)-Intel Advisor -offload advisor
 open terminal on Intel Devcloud  and execute follwoing commands
 1)$ mkdir day5
 2)$ cd day5
