@@ -172,7 +172,7 @@ To get access of GPU
 
 
 +++++++++++++++++++++++++++++++
-Day4 -
+Day5 -
 Task1-Run the program on Intel Devcloud 
 1)Open Intel Devcloud OneAPI with your LogIn Credentials
 2)Open Terminal on Intel Devcloud
@@ -222,10 +222,12 @@ qsub -l nodes=1:fpga:ppn=2 -d . run.sh
 13)To check output run command on terminal 
 >cat run.sh.oXXXX
 
-
+Task3 -
+Excersice Day5
+https://devcloud.intel.com/oneapi/documentation/base-toolkit/
 +++++++++++++++++++++++++++++++++++++++++++++=
-Day5
-Task1 -Intel Advisor -offload advisor
+
+Task2  -Intel Advisor -offload advisor
 open terminal on Intel Devcloud  and execute follwoing commands
 1)$ mkdir day5
 2)$ cd day5
