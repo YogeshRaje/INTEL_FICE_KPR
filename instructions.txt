@@ -176,34 +176,33 @@ Day5 -
 Task1-Run the program on Intel Devcloud 
 1)Open Intel Devcloud OneAPI with your LogIn Credentials
 2)Open Terminal on Intel Devcloud
-3)Create new Folder named cprograms under oneAPI_Essentials folder
-3a)Invoke dpcpp compiler 
-> source /opt/intel/inteloneapi/setvars.sh
-4)Upload your program into the folder named cprograms
+3)Create new Folder named kprday51 under oneAPI_Essentials folder
+$cd oneAPI_Essentials/
+$mkdir kprday51
+3a) go to the kprday5 directory 
+$cd oneAPI_Essentials//kprday51/
+3b)Invoke dpcpp compiler 
+$ source /opt/intel/inteloneapi/setvars.sh
+4)Upload your program helloworldwithtime.c into the folder named kprday51
+
 5)Run your program eg helloworldwithtime.c using command
  >dpcpp helloworldwithtime.c -o helloworld.out
- >./helloworld.out 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-https://devcloud.intel.com/oneapi/documentation/base-toolkit/
+ $./helloworld.out 
 
 
-6) Request an interactive session on a DevCloud GPU node using qsub  
-qsub -I -l nodes=1:gpu:ppn=2 -d .
+6)create build.sh
+$nano build.sh
 
-
-7)create build.sh
->nano build.sh
-
-8)save following code into build.sh and return to terminal 
+7)save following code into build.sh and return to terminal 
 #!/bin/bash
 source /opt/intel/inteloneapi/setvars.sh
 make clean
 make all
 
-9)create run.sh
->nano run.sh 
+8)create run.sh
+$nano run.sh 
  
-10) Save  following code into run.sh and return to terminal 
+9) Save  following code into run.sh and return to terminal 
 #!/bin/bash
 source /opt/intel/inteloneapi/setvars.sh
 dpcpp helloworldwithtime.c -o hello.out
@@ -211,16 +210,171 @@ dpcpp helloworldwithtime.c -o hello.out
 make run
 
 
-11)run follwoing command on terminal 
->qsub -l nodes=1:gpu:ppn=2 -d . build.sh
-qsub -l nodes=1:fpga:ppn=2 -d . build.sh
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+10) Build and Run the Sample in Batch Mode
+The following describes the process of submitting build and run jobs to PBS.
 
-12)run follwoing command on terminal 
->qsub -l nodes=1:gpu:ppn=2 -d . run.sh
-qsub -l nodes=1:fpga:ppn=2 -d . run.sh
+A job is a script that is submitted to PBS through the qsub utility. By default, the qsub utility does not inherit the current environment variables or your current working directory. For this reason, it is necessary to submit jobs as scripts that handle the setup of the environment variables. In order to address the working directory issue, you can either use absolute paths or pass the -d <dir> option to qsub to set the working directory.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-13)To check output run command on terminal 
->cat run.sh.oXXXX
+Build and Run
+Jobs submitted in batch mode are placed in a queue waiting for the necessary resources (compute nodes) to become available. The jobs will be executed on a first come basis on the first available node(s) having the requested property or label.
+
+Build the sample on a GPU node using following command in terminal 
+
+$ qsub -l nodes=1:gpu:ppn=2 -d . build.sh
+
+Notes -l nodes=1:gpu:ppn=2 (lower case L) is used to assign one full GPU node to the job.
+The -d . is used to configure the current folder as the working directory for the task.
+
+
+
+11)In batch mode, the commands return immediately; however, the job itself may take longer to complete. In order to inspect the job progress, use the qstat utility.
+$ watch -n 1 qstat -n -1
+
+to retrun back to command prompt press ctrl+c 
+
+Note: The watch -n 1 command is used to run qstat -n -1 and display its results every second.
+
+It will create follwoing two files 
+build.sh.e2044874   //(for your program numbers are differnt) // This is erroer file 
+build.sh.o2044874   // (for your program numbers are differnt) //This is output file 
+
+
+12) Run the sample on a GPU node after the build job completes successfully.
+$ qsub -l nodes=1:gpu:ppn=2 -d . run.sh
+
+The best way to determine whether a job completed or not is by using the qstat utility. When a job terminates, a couple of files are written to the disk:
+<script_name>.sh.eXXXX, which is the job stderr
+<script_name>.sh.oXXXX, which is the job stdout
+Here XXXX is the job ID, which gets printed to the screen after each qsub command.
+run.sh.e2044879  // error file 
+run.sh.o2044879 // output file 
+
+
+
+13) Inspect the output of the sample.
+$ cat run.sh.o2044879
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Task 3- Run program on FPGA 
+You can compile or run oneAPI designs on the FPGA platform using the Intel DevCloud, which is set up with an Intel® Programmable Acceleration Card with Intel® Arria® 10 GX FPGA and the necessary software stack.
+
+Above program helloworldwithtime.c can be compiled to target the FPGA Emulator or the FPGA Hardware.
+
+FPGA Emulator
+
+1) Create the build_fpga_emu.sh and run_fpga_emu.sh scripts for targeting the emulator.
+1a) create build_fpga_emu.sh
+$ nano build_fpga_emu.sh
+
+Save the follwoing code into it and save and retrun to command prompt 
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+make fpga_emu -f Makefile.fpga
+
+1b)create  run_fpga_emu.sh
+$ nano run_fpga_emu.sh
+
+Save the follwoing code into it and save and retrun to command prompt 
+
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+dpcpp helloworldwithtime.c -o hello.out
+./hello.out
+make fpga_emu -f Makefile.fpga
+
+
+2)Submit the compilation job.
+Note: Compile jobs should be submitted to compute nodes labeled fpga_compile, which are dedicated to FPGA compile jobs.
+$ qsub -l nodes=1:fpga_compile:ppn=2 -d . build_fpga_emu.sh
+
+It will create two files 
+build_fpga_emu.sh.e2044890
+build_fpga_emu.sh.o2044890
+
+3) Submit the execution job.
+Note: Execution should be performed on nodes labeled fpga_compile which have more compute resources available for intensive workloads.
+
+$ qsub -l nodes=1:fpga_compile:ppn=2 -d . run_fpga_emu.sh
+
+
+It will create two files 
+run_fpga_emu.sh.e2044894
+run_fpga_emu.sh.o2044894
+
+
+
+4) Inspect the output of the sample.
+$ cat run_fpga_emu.sh.o2044894
+
+
+Task 5 -Run program on FPGA Hardware 
+1.Create the build_fpga_hw.sh and run_fpga_hw.sh scripts for targeting the FPGA hardware.
+1a)build_fpga_hw.sh
+$nano build_fpga_hw.sh
+
+Save the follwoing code into it and save and retrun to command prompt 
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+make hw -f Makefile.fpga
+
+
+1b) run_fpga_hw.sh
+$ nano run_fpga_hw.sh
+Save the follwoing code into it and save and retrun to command prompt 
+#!/bin/bash
+source /opt/intel/inteloneapi/setvars.sh
+dpcpp helloworldwithtime.c -o hello.out
+./hello.out
+make run_hw -f Makefile.fpga
+
+
+2) Submit the compilation job.
+Note: A hardware compile job can take a long time. You can increase the timeout of a batch job by using the -l walltime=hh:mm:ss option. The maximum timeout available for FPGA compile jobs is 24h.
+
+$qsub -l nodes=1:fpga_compile:ppn=2 -d . build_fpga_hw.sh 
+
+It will create two files
+build_fpga_hw.sh.e2044902
+build_fpga_hw.sh.o2044902
+
+3) Submit the execution job.
+Note: Execution should be performed on compute nodes labeled fpga_runtime:<fpga type> (where <fpga type> can be arria10 or stratix10, and must match the device type you targeted when compiling your executable), which host FPGA cards.
+
+$ qsub -l nodes=1:fpga_runtime:arria10:ppn=2 -d . run_fpga_hw.sh
+
+It will cretae two files
+run_fpga_hw.sh.e2044908
+run_fpga_hw.sh.o2044908
+
+4) Inspect the output of the sample.
+$ cat run_fpga_hw.sh.o2044908
+
+It provides follwoing resource : arria10
+Resources: neednodes=1:fpga_runtime:arria10:ppn=2,nodes=1:fpga_runtime:arria10:ppn=2,walltime=06:00:00
+or 
+
+
+5) run job for stratix10 fpga
+$ qsub -l nodes=1:fpga_runtime:stratix10:ppn=2 -d . run_fpga_hw.sh
+It will create two files 
+run_fpga_hw.sh.e2044917
+run_fpga_hw.sh.o2044917
+
+6)Inspect the output of the sample.
+$ cat run_fpga_hw.sh.o2044917
+
+It will shpw you the fpga stratix10
+#Resources:neednodes=1:fpga_runtime:stratix10:ppn=2,nodes=1:fpga_runtime:stratix10:ppn=2,walltime=06:00:00
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
 
 Task3 -
 Excersice Day5
