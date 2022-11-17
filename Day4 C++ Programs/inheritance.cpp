@@ -17,10 +17,12 @@ class Car: public Vehicle {
     string model = "Mustang";
 };
 
-int main() {
+int main() 
+{
   Car myCar;
   myCar.honk();
   cout << myCar.brand + " " + myCar.model;
   return 0;
 }
+
 
